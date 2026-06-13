@@ -268,7 +268,7 @@ This application is ready for Vercel deployment:
 ## ✍️ Author
 - **Sadik Mondal**
   - [GitHub Profile](https://github.com/Sadik47x)
-  - [LinkedIn Profile](https://linkedin.com/in/sadikmondal)
+  - [LinkedIn Profile](https://www.linkedin.com/in/sadik-mondal)
 
 ---
 
