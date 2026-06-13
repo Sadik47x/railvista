@@ -187,19 +187,19 @@ Through a rigorous query auditing process, database lookup latency was optimized
 *The following visual documents represent the user journey of the platform:*
 
 #### 🏠 Homepage & Search
-`screenshots/homepage.png`
+![Homepage & Search](screenshots/homepage.png)
 
 #### 🔍 Train Search Results
-`screenshots/search.png`
+![Train Search Results](screenshots/search.png)
 
 #### 🛋️ Visual Seat Selection
-`screenshots/seat-selection.png`
+![Visual Seat Selection](screenshots/seat-selection.png)
 
 #### 🎫 Digital Ticket Boarding Pass
-`screenshots/ticket.png`
+![Digital Ticket Boarding Pass](screenshots/ticket.png)
 
 #### 📊 Admin Status Dashboard
-`screenshots/admin-dashboard.png`
+![Admin Status Dashboard](screenshots/admin-dashboard.png)
 
 ---
 
