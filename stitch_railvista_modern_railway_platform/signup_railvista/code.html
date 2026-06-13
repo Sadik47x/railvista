@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up | RailVista</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "status-warning": "#FEBB02",
+                    "surface-dim": "#dcd9d9",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "tertiary-fixed": "#55feb5",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#0058bc",
+                    "on-tertiary-container": "#00c081",
+                    "inverse-surface": "#313030",
+                    "tertiary": "#002e1c",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#00164e",
+                    "surface-variant": "#e5e2e1",
+                    "on-primary-container": "#8aa4ff",
+                    "inverse-primary": "#b5c4ff",
+                    "tertiary-container": "#00472d",
+                    "primary-fixed-dim": "#b5c4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "outline-variant": "#c4c5d5",
+                    "on-error-container": "#93000a",
+                    "border-light": "#E2E8F0",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-surface-variant": "#444653",
+                    "surface-tint": "#3557bc",
+                    "primary": "#002068",
+                    "on-secondary-fixed": "#001a41",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#1070e8",
+                    "background": "#fcf9f8",
+                    "on-secondary-fixed-variant": "#004494",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-background": "#1c1b1b",
+                    "outline": "#747684",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#dce1ff",
+                    "surface-muted": "#F5F7FA",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1c1b1b",
+                    "surface": "#fcf9f8",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-bright": "#fcf9f8",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae7e7",
+                    "on-primary-fixed-variant": "#153ea3",
+                    "tertiary-fixed-dim": "#2ae19b",
+                    "on-tertiary-fixed-variant": "#005234",
+                    "primary-container": "#003399",
+                    "on-tertiary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "unit": "4px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "title-md": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pattern {
+            background-color: #fcf9f8;
+            background-image: radial-gradient(#002068 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .railway-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col">
+<!-- Subtle Background Elements -->
+<div class="fixed inset-0 z-0">
+<div class="bg-pattern absolute inset-0"></div>
+<svg class="railway-lines opacity-[0.03]" viewbox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<path d="M-100,200 Q400,150 1100,300" fill="none" stroke="#002068" stroke-width="2"></path>
+<path d="M-100,500 Q500,450 1100,550" fill="none" stroke="#002068" stroke-width="2"></path>
+<path d="M200,-100 Q250,500 300,1100" fill="none" stroke="#002068" stroke-width="2"></path>
+<path d="M700,-100 Q650,500 600,1100" fill="none" stroke="#002068" stroke-width="2"></path>
+<circle cx="235" cy="185" fill="#002068" r="4"></circle>
+<circle cx="485" cy="465" fill="#002068" r="4"></circle>
+<circle cx="625" cy="735" fill="#002068" r="4"></circle>
+</svg>
+</div>
+<!-- Main Content -->
+<main class="relative z-10 flex-grow flex items-center justify-center px-margin-mobile md:px-margin-desktop py-12">
+<div class="w-full max-w-[480px]">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="train">train</span>
+<h1 class="font-headline-lg text-primary tracking-tight">RailVista</h1>
+</div>
+</div>
+<!-- Signup Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_8px_30px_rgb(0,32,104,0.06)] border border-outline-variant/30 p-8 md:p-10">
+<div class="text-center mb-8">
+<h2 class="font-headline-lg text-on-surface mb-2">Create Your RailVista Account</h2>
+<p class="font-body-md text-on-surface-variant">Start booking railway journeys with visual seat selection.</p>
+</div>
+<!-- Social Signup -->
+<button class="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-all duration-200 active:scale-[0.98] mb-6">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-label-md text-on-surface">Continue with Google</span>
+</button>
+<div class="relative flex items-center mb-6">
+<div class="flex-grow border-t border-outline-variant/50"></div>
+<span class="flex-shrink mx-4 text-label-sm text-outline uppercase tracking-widest">or email</span>
+<div class="flex-grow border-t border-outline-variant/50"></div>
+</div>
+<!-- Form Fields -->
+<form class="space-y-5" onsubmit="return false">
+<div>
+<label class="block font-label-md text-on-surface-variant mb-1.5 ml-1" for="name">Full Name</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-outline/50" id="name" placeholder="John Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-1.5 ml-1" for="email">Email Address</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-outline/50" id="email" placeholder="john@example.com" type="email"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-on-surface-variant mb-1.5 ml-1" for="password">Password</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-outline/50" id="password" placeholder="••••••••" type="password"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-1.5 ml-1" for="confirm-password">Confirm Password</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all placeholder:text-outline/50" id="confirm-password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full bg-primary text-on-primary font-label-md py-4 rounded-lg shadow-lg shadow-primary/10 hover:bg-primary-container transition-all active:scale-[0.98] mt-4" type="submit">
+                        Create Account
+                    </button>
+</form>
+<!-- Login Link -->
+<div class="mt-8 text-center">
+<p class="font-body-md text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-secondary font-semibold hover:underline decoration-2 underline-offset-4" href="#">Sign In</a>
+</p>
+</div>
+<!-- Benefits Section -->
+<div class="mt-10 pt-8 border-t border-outline-variant/30 grid grid-cols-1 gap-4">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low/50">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="event_seat">event_seat</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Visual Seat Selection</p>
+<p class="text-[12px] text-on-surface-variant leading-tight">Pick your perfect spot on the train.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low/50">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Digital Tickets</p>
+<p class="text-[12px] text-on-surface-variant leading-tight">Go paperless with instant e-tickets.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low/50">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="dashboard_customize">dashboard_customize</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Manage Bookings Easily</p>
+<p class="text-[12px] text-on-surface-variant leading-tight">Cancel or reschedule in one click.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Small -->
+<div class="mt-8 text-center">
+<p class="text-[11px] text-outline font-medium tracking-wide uppercase">
+                    By joining, you agree to our <a class="hover:text-secondary underline" href="#">Terms of Service</a> and <a class="hover:text-secondary underline" href="#">Privacy Policy</a>
+</p>
+</div>
+</div>
+</main>
+<!-- App Shell Footer (JSON Compliance) -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant relative z-10">
+<div class="w-full py-12 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="mb-4 md:mb-0">
+<span class="font-headline-lg-mobile text-on-surface">RailVista</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6 mb-4 md:mb-0">
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Help Center</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Career</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact Us</a>
+</div>
+<div class="text-label-md text-on-surface-variant">
+                © 2024 RailVista Technologies. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label')?.classList.add('text-secondary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label')?.classList.remove('text-secondary');
+            });
+        });
+
+        // Simple parallax effect for the background svg lines
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            const lines = document.querySelector('.railway-lines');
+            if (lines) {
+                lines.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            }
+        });
+    </script>
+</body></html>

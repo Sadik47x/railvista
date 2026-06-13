@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RailVista | Modern Indian Railway Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "secondary": "#0058bc",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-tint": "#3557bc",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#153ea3",
+                        "secondary-container": "#1070e8",
+                        "surface-container-high": "#eae7e7",
+                        "primary-fixed": "#dce1ff",
+                        "border-light": "#E2E8F0",
+                        "secondary-fixed": "#d8e2ff",
+                        "inverse-surface": "#313030",
+                        "error": "#ba1a1a",
+                        "tertiary": "#002e1c",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "on-secondary-fixed-variant": "#004494",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#444653",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-container": "#00c081",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#00472d",
+                        "outline-variant": "#c4c5d5",
+                        "surface-bright": "#fcf9f8",
+                        "tertiary-fixed-dim": "#2ae19b",
+                        "primary": "#002068",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-fixed": "#55feb5",
+                        "on-primary-fixed": "#00164e",
+                        "on-tertiary-fixed-variant": "#005234",
+                        "surface-muted": "#F5F7FA",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "primary-container": "#003399",
+                        "outline": "#747684",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container": "#f0eded",
+                        "status-warning": "#FEBB02",
+                        "on-secondary-fixed": "#001a41",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#8aa4ff",
+                        "on-background": "#1c1b1b",
+                        "inverse-primary": "#b5c4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #fcf9f8;
+        }
+        .premium-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 51, 153, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 sticky z-50 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-8">
+<img alt="RailVista Logo" class="h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqBCKuBWdkrsdnhnZ6FqGfLAGoqO1_rKCkJnXV_YiBt-Lb3DnMFaSQKXVhhrCuKrpc9AKcYYio4OZERXsUuBHgCDn8e1Y4ELKLrNxCRMN3W-RiCS7hrLerK0m-t6lAeY6agucpTvwspkTTfYngflYWbMTp2cFfpegoo5rH0dYk0789Yx9eXjHiJV9fCksvYfo2y02B9OaFgPrjYey-4vjD9SXai-vtBwLDJ-YtrvbOy0kuRo3PvcCQlfgP_FdEiXxIxeMF4k2WOTg"/>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-title-md text-title-md" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-secondary transition-colors font-title-md text-title-md" href="#">My Bookings</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-secondary transition-colors font-title-md text-title-md" href="#">Routes</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-secondary transition-colors font-title-md text-title-md" href="#">Offers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary font-bold px-4 py-2 hover:bg-secondary/5 rounded-lg transition-all scale-98 active:scale-95 duration-200">Sign In</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-primary-container transition-all scale-98 active:scale-95 duration-200">Sign Up</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-12 pb-24 overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8 z-10">
+<div class="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-1.5 rounded-full font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                        Authorized IRCTC Partner
+                    </div>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight">
+                        Choose Your <span class="text-secondary">Train Seat</span>,<br/> Not Just Your Train
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        India's next-generation railway booking platform with visual coach layouts, smart seat selection, and a premium travel experience.
+                    </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-primary/20 transition-all flex items-center gap-2">
+                            Explore Visual Maps
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-secondary/5 rounded-[40px] -rotate-3 transition-transform group-hover:rotate-0 duration-500"></div>
+<img alt="Vande Bharat Express" class="relative w-full h-[500px] object-cover rounded-[32px] shadow-2xl z-0" data-alt="A futuristic and sleek Vande Bharat Express train gliding through a scenic Indian landscape during a golden hour sunset. The train's aerodynamic silver and blue design reflects the warm orange light, contrasting with lush green fields in the background. The style is ultra-modern, high-performance travel photography with a shallow depth of field and vibrant, cinematic color grading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVoicSplk-sbj3AgfVKcvUsA3UePtIUnTgF9NKOITpXCuCWH-Hjln_RHXIgo8gc6FiAJkyUlrertg1513qTlO7FnUf8_FkI8hM71LwY5g7AV6Dt_ursT_URLpN6e29B8ndyFLhdZg5963LDJmcoXrziLQK2QtddhTYskD1m0JMU7sXg5ue5DKQ_gunfGehDgOJLn8cws34zV3_SM11O3ZkQ-3KZLgXxHIAmmdM96UXCAjoBOR6TJ90F8MUiuehPtwihf4PiVffjWo"/>
+<div class="absolute bottom-8 left-8 right-8 glass-card p-6 rounded-2xl flex items-center gap-4 animate-bounce">
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined">airline_seat_recline_extra</span>
+</div>
+<div>
+<p class="font-bold text-primary">Live Seat Mapping</p>
+<p class="text-sm text-on-surface-variant">View available window seats in real-time</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search Section -->
+<section class="-mt-20 relative z-20 px-gutter">
+<div class="max-w-container-max mx-auto">
+<div class="bg-white p-8 md:p-10 rounded-[32px] premium-shadow border border-outline-variant/30">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<!-- From -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> From
+                            </label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-4 py-3 font-title-md text-title-md transition-all rounded-t-lg" placeholder="New Delhi (NDLS)" type="text"/>
+</div>
+<!-- To -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">near_me</span> To
+                            </label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-4 py-3 font-title-md text-title-md transition-all rounded-t-lg" placeholder="Howrah (HWH)" type="text"/>
+</div>
+<!-- Date -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span> Date
+                            </label>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-4 py-3 font-title-md text-title-md transition-all rounded-t-lg" type="date"/>
+</div>
+<!-- Class/Quota -->
+<div class="grid grid-cols-2 gap-4 col-span-1 lg:col-span-1">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Class</label>
+<select class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-2 py-3 font-label-md text-label-md rounded-t-lg">
+<option>Sleeper</option>
+<option>3A Tier</option>
+<option>2A Tier</option>
+<option>1A Tier</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Quota</label>
+<select class="w-full bg-surface-container-low border-0 border-b-2 border-outline-variant focus:border-secondary focus:ring-0 px-2 py-3 font-label-md text-label-md rounded-t-lg">
+<option>General</option>
+<option>Ladies</option>
+<option>Senior</option>
+<option>Tatkal</option>
+</select>
+</div>
+</div>
+<!-- Search Button -->
+<div class="flex items-end">
+<button class="w-full bg-secondary text-on-secondary h-[56px] rounded-xl font-bold text-body-lg shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">search</span> Search Trains
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Redefining Indian Rail Travel</h2>
+<p class="text-on-surface-variant font-body-lg">Stop guessing where you'll sit. We bring transparency to every booking.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Feature 1 -->
+<div class="p-8 rounded-[24px] bg-white border border-outline-variant/30 hover:border-secondary transition-all group">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-[32px]">view_comfy_alt</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-3">Visual Seat Selection</h3>
+<p class="text-on-surface-variant font-body-md">Choose your exact berth or seat from a live map of the train coach.</p>
+</div>
+<!-- Feature 2 -->
+<div class="p-8 rounded-[24px] bg-white border border-outline-variant/30 hover:border-secondary transition-all group">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-[32px]">architecture</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-3">Real Coach Layout</h3>
+<p class="text-on-surface-variant font-body-md">Understand the proximity to doors, toilets, and windows before you confirm.</p>
+</div>
+<!-- Feature 3 -->
+<div class="p-8 rounded-[24px] bg-white border border-outline-variant/30 hover:border-secondary transition-all group">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-[32px]">bolt</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-3">Fast Booking</h3>
+<p class="text-on-surface-variant font-body-md">Optimized checkout flow that gets you confirmed tickets in under 60 seconds.</p>
+</div>
+<!-- Feature 4 -->
+<div class="p-8 rounded-[24px] bg-white border border-outline-variant/30 hover:border-secondary transition-all group">
+<div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-[32px]">qr_code_2</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-3">Digital Tickets</h3>
+<p class="text-on-surface-variant font-body-md">Store all your tickets in one secure app, accessible offline whenever needed.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Routes -->
+<section class="py-24">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Most Travelled Routes</h2>
+<p class="text-on-surface-variant font-body-md">Explore the busiest corridors in the country.</p>
+</div>
+<button class="text-secondary font-bold flex items-center gap-1 hover:underline">View All <span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Route 1 -->
+<a class="group p-6 rounded-2xl bg-white premium-shadow border border-transparent hover:border-secondary/20 transition-all" href="#">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">From</p>
+<p class="font-title-md text-title-md text-primary">Howrah</p>
+</div>
+<div class="flex-1 flex flex-col items-center px-4 relative">
+<div class="w-full h-[1px] bg-outline-variant relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2">
+<span class="material-symbols-outlined text-secondary scale-x-[-1]">train</span>
+</div>
+</div>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">To</p>
+<p class="font-title-md text-title-md text-primary">New Delhi</p>
+</div>
+</div>
+</a>
+<!-- Route 2 -->
+<a class="group p-6 rounded-2xl bg-white premium-shadow border border-transparent hover:border-secondary/20 transition-all" href="#">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">From</p>
+<p class="font-title-md text-title-md text-primary">Sealdah</p>
+</div>
+<div class="flex-1 flex flex-col items-center px-4">
+<div class="w-full h-[1px] bg-outline-variant relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2">
+<span class="material-symbols-outlined text-secondary scale-x-[-1]">train</span>
+</div>
+</div>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">To</p>
+<p class="font-title-md text-title-md text-primary">Mumbai</p>
+</div>
+</div>
+</a>
+<!-- Route 3 -->
+<a class="group p-6 rounded-2xl bg-white premium-shadow border border-transparent hover:border-secondary/20 transition-all" href="#">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">From</p>
+<p class="font-title-md text-title-md text-primary">Kolkata</p>
+</div>
+<div class="flex-1 flex flex-col items-center px-4">
+<div class="w-full h-[1px] bg-outline-variant relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2">
+<span class="material-symbols-outlined text-secondary scale-x-[-1]">train</span>
+</div>
+</div>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">To</p>
+<p class="font-title-md text-title-md text-primary">Bengaluru</p>
+</div>
+</div>
+</a>
+<!-- Additional Routes Grid for completeness -->
+<a class="group p-6 rounded-2xl bg-white premium-shadow border border-transparent hover:border-secondary/20 transition-all" href="#">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">From</p>
+<p class="font-title-md text-title-md text-primary">Patna</p>
+</div>
+<div class="flex-1 flex flex-col items-center px-4">
+<div class="w-full h-[1px] bg-outline-variant relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2">
+<span class="material-symbols-outlined text-secondary scale-x-[-1]">train</span>
+</div>
+</div>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">To</p>
+<p class="font-title-md text-title-md text-primary">Chennai</p>
+</div>
+</div>
+</a>
+<a class="group p-6 rounded-2xl bg-white premium-shadow border border-transparent hover:border-secondary/20 transition-all" href="#">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">From</p>
+<p class="font-title-md text-title-md text-primary">Guwahati</p>
+</div>
+<div class="flex-1 flex flex-col items-center px-4">
+<div class="w-full h-[1px] bg-outline-variant relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2">
+<span class="material-symbols-outlined text-secondary scale-x-[-1]">train</span>
+</div>
+</div>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">To</p>
+<p class="font-title-md text-title-md text-primary">Delhi</p>
+</div>
+</div>
+</a>
+<a class="group p-6 rounded-2xl bg-white premium-shadow border border-transparent hover:border-secondary/20 transition-all" href="#">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">From</p>
+<p class="font-title-md text-title-md text-primary">Hyderabad</p>
+</div>
+<div class="flex-1 flex flex-col items-center px-4">
+<div class="w-full h-[1px] bg-outline-variant relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2">
+<span class="material-symbols-outlined text-secondary scale-x-[-1]">train</span>
+</div>
+</div>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">To</p>
+<p class="font-title-md text-title-md text-primary">Howrah</p>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Why RailVista Comparison -->
+<section class="py-24 bg-primary overflow-hidden relative">
+<!-- Background element -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-primary-container/30 skew-x-12 translate-x-1/4"></div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-white mb-4">The Better Way to Travel</h2>
+<p class="text-on-primary-container font-body-lg">We've modernized every step of the journey.</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-0 rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
+<!-- Traditional -->
+<div class="bg-primary-container/20 p-12 backdrop-blur-sm">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">cancel</span>
+</div>
+<h3 class="font-title-md text-title-md text-white/60">Traditional Platforms</h3>
+</div>
+<ul class="space-y-6">
+<li class="flex items-start gap-4 text-white/50">
+<span class="material-symbols-outlined mt-1">remove</span>
+<p>Automated seat allocation without user choice</p>
+</li>
+<li class="flex items-start gap-4 text-white/50">
+<span class="material-symbols-outlined mt-1">remove</span>
+<p>Complex and cluttered administrative UI</p>
+</li>
+<li class="flex items-start gap-4 text-white/50">
+<span class="material-symbols-outlined mt-1">remove</span>
+<p>No visibility into coach status or amenities</p>
+</li>
+</ul>
+</div>
+<!-- RailVista -->
+<div class="bg-white p-12">
+<div class="mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary">RailVista Experience</h3>
+</div>
+<ul class="space-y-6">
+<li class="flex items-start gap-4 text-primary font-medium">
+<span class="material-symbols-outlined mt-1 text-secondary">verified</span>
+<p>Visual interactive maps for exact seat selection</p>
+</li>
+<li class="flex items-start gap-4 text-primary font-medium">
+<span class="material-symbols-outlined mt-1 text-secondary">verified</span>
+<p>Minimalist high-performance interface</p>
+</li>
+<li class="flex items-start gap-4 text-primary font-medium">
+<span class="material-symbols-outlined mt-1 text-secondary">verified</span>
+<p>Full coach layout and proximity awareness</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust & Stats -->
+<section class="py-24">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="bg-surface-container-low rounded-[40px] p-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div>
+<div class="font-display-lg text-display-lg text-primary mb-2">100+</div>
+<p class="font-title-md text-title-md text-secondary uppercase tracking-widest">Major Stations</p>
+<p class="text-on-surface-variant mt-2">Connecting all metropolitan hubs across India</p>
+</div>
+<div class="border-y md:border-y-0 md:border-x border-outline-variant py-8 md:py-0">
+<div class="font-display-lg text-display-lg text-primary mb-2">50+</div>
+<p class="font-title-md text-title-md text-secondary uppercase tracking-widest">Premium Trains</p>
+<p class="text-on-surface-variant mt-2">Specializing in Vande Bharat &amp; Tejas routes</p>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-primary mb-2">30,000+</div>
+<p class="font-title-md text-title-md text-secondary uppercase tracking-widest">Seats Mapped</p>
+<p class="text-on-surface-variant mt-2">Every berth digitized for your choice</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width mt-auto">
+<div class="w-full py-16 px-gutter max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="space-y-6">
+<img alt="RailVista Logo" class="h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqBCKuBWdkrsdnhnZ6FqGfLAGoqO1_rKCkJnXV_YiBt-Lb3DnMFaSQKXVhhrCuKrpc9AKcYYio4OZERXsUuBHgCDn8e1Y4ELKLrNxCRMN3W-RiCS7hrLerK0m-t6lAeY6agucpTvwspkTTfYngflYWbMTp2cFfpegoo5rH0dYk0789Yx9eXjHiJV9fCksvYfo2y02B9OaFgPrjYey-4vjD9SXai-vtBwLDJ-YtrvbOy0kuRo3PvcCQlfgP_FdEiXxIxeMF4k2WOTg"/>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                    Revolutionizing Indian Railways booking through visual intelligence and high-performance engineering.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-outline-variant/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
+<a class="w-10 h-10 rounded-full bg-outline-variant/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">alternate_email</span></a>
+<a class="w-10 h-10 rounded-full bg-outline-variant/20 flex items-center justify-center hover:bg-secondary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">call</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">My Bookings</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Live Status</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">PNR Enquiry</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Train Schedule</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary mb-6">Policies</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Refund Rules</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Sitemap</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-title-md text-title-md text-primary mb-6">Stay Updated</h4>
+<p class="text-on-surface-variant font-body-md">Get exclusive offers and travel tips in your inbox.</p>
+<div class="flex gap-2">
+<input class="bg-white border-outline-variant focus:border-secondary rounded-lg px-4 py-2 w-full text-sm" placeholder="Email Address" type="email"/>
+<button class="bg-secondary text-white px-4 py-2 rounded-lg font-bold">Join</button>
+</div>
+</div>
+</div>
+<div class="w-full py-8 px-gutter border-t border-outline-variant/30 text-center">
+<p class="text-on-surface-variant font-label-md text-label-md opacity-80">
+                © 2024 RailVista Technologies. An authorized IRCTC Partner. Built for Indian Railways passengers.
+            </p>
+</div>
+</footer>
+<script>
+        // Smooth header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Search button interaction
+        const searchBtn = document.querySelector('button.bg-secondary');
+        searchBtn.addEventListener('click', () => {
+            searchBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Finding Trains...';
+            setTimeout(() => {
+                searchBtn.innerHTML = '<span class="material-symbols-outlined">search</span> Search Trains';
+            }, 2000);
+        });
+    </script>
+</body></html>

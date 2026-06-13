@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seat Selection | RailVista</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#adc6ff",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary": "#002068",
+                        "inverse-surface": "#313030",
+                        "status-warning": "#FEBB02",
+                        "background": "#fcf9f8",
+                        "surface-variant": "#e5e2e1",
+                        "primary-container": "#003399",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#fcf9f8",
+                        "tertiary-fixed-dim": "#2ae19b",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary": "#002e1c",
+                        "surface-tint": "#3557bc",
+                        "on-secondary-fixed-variant": "#004494",
+                        "on-secondary": "#ffffff",
+                        "outline": "#747684",
+                        "on-primary-fixed-variant": "#153ea3",
+                        "on-secondary-container": "#fefcff",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001a41",
+                        "on-background": "#1c1b1b",
+                        "on-surface-variant": "#444653",
+                        "on-primary-container": "#8aa4ff",
+                        "on-primary-fixed": "#00164e",
+                        "surface-muted": "#F5F7FA",
+                        "on-surface": "#1c1b1b",
+                        "secondary": "#0058bc",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#55feb5",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-container": "#1070e8",
+                        "inverse-primary": "#b5c4ff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c5d5",
+                        "on-tertiary-container": "#00c081",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#dce1ff",
+                        "surface-container-high": "#eae7e7",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "border-light": "#E2E8F0",
+                        "surface-container": "#f0eded",
+                        "surface": "#fcf9f8",
+                        "tertiary-container": "#00472d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #ffffff; color: #1c1b1b; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .seat-grid { display: grid; grid-template-columns: repeat(3, 1fr) 40px repeat(1, 1fr); gap: 8px; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface-container-lowest">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm dark:shadow-none sticky top-0 z-[60]">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg font-bold text-primary dark:text-secondary-fixed cursor-pointer">RailVista</span>
+<div class="hidden md:flex items-center gap-6 text-on-surface-variant">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Train</span>
+<span class="font-title-md text-title-md text-primary font-bold">12301 Rajdhani Express</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Route</span>
+<span class="font-title-md text-title-md text-on-surface">Howrah <span class="material-symbols-outlined align-middle text-sm mx-1">arrow_forward</span> New Delhi</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Date</span>
+<span class="font-title-md text-title-md text-on-surface">15 July 2026</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors">Support</button>
+<div class="material-symbols-outlined text-primary cursor-pointer">notifications</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQigz0zbPZ6dVjn_0XcXdFVnBxEQjGu42iw2JCCnuSBDw0xn6kkygumjHZchwvcYdubKS8ksJDAZ_ijQmXi90uDaKLEWoXd5d9gXffPp8xIDhHkpYyPdKi5y_C2WumSpaDxhpZafY-A8ou9QlMAtk3aX0Mvmkgygx1A5WGPezlwuaHtRR7U1_2w-TKajfiXzQIkPahaLB4Uv5L9PaBpgwgPIrGtZ4R9j6d-5H-knElE0pv4CXaKN2grQEHpU-iusOT0kl3BTuW51E"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-8 flex flex-col lg:flex-row gap-12 items-start">
+<!-- Left Content: Coach Selector & Seat Map -->
+<section class="flex-1 w-full">
+<!-- Coach Selector -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-title-md text-title-md text-on-surface">Select Coach</h2>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-white border border-outline-variant rounded-sm"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-surface-container-high rounded-sm"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Booked</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary rounded-sm"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Selected</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2 p-1 bg-surface-container rounded-xl overflow-x-auto no-scrollbar">
+<button class="px-8 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-white/50 transition-all">A1</button>
+<button class="px-8 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-white/50 transition-all">A2</button>
+<button class="px-8 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-white/50 transition-all">B1</button>
+<button class="px-8 py-3 rounded-lg font-label-md text-label-md bg-primary text-white shadow-md">B2</button>
+<button class="px-8 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-white/50 transition-all">B3</button>
+<button class="px-8 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-white/50 transition-all">S1</button>
+</div>
+</div>
+<!-- Coach Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+<div class="bg-white p-6 rounded-2xl border border-border-light shadow-sm flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Coach Class</span>
+<span class="font-title-md text-title-md text-on-surface">AC 3 Tier (3A)</span>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-border-light shadow-sm flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Available</span>
+<span class="font-title-md text-title-md text-secondary">28 Seats</span>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-border-light shadow-sm flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Occupancy</span>
+<span class="font-title-md text-title-md text-on-surface">72% Full</span>
+</div>
+</div>
+<!-- Seat Map -->
+<div class="bg-white rounded-3xl border border-border-light shadow-sm p-12 overflow-x-auto">
+<div class="min-w-[600px] mx-auto flex flex-col gap-12">
+<!-- Coach Boundary Start -->
+<div class="flex items-center justify-between opacity-30 px-4">
+<span class="font-label-sm text-label-sm">DOOR</span>
+<div class="h-[1px] flex-1 mx-8 bg-outline-variant"></div>
+<span class="font-label-sm text-label-sm">ENTRY</span>
+</div>
+<!-- Row Container -->
+<div class="flex flex-col gap-8">
+<!-- Repeatable Row Block (4 Rows Shown) -->
+<script>
+                            const rows = [
+                                { main: [{n:1, t:'LB'}, {n:2, t:'MB', b:true}, {n:3, t:'UB'}], side: [{n:7, t:'SL'}] },
+                                { main: [{n:4, t:'LB', s:true}, {n:5, t:'MB'}, {n:6, t:'UB'}], side: [{n:8, t:'SU'}] },
+                                { main: [{n:9, t:'LB'}, {n:10, t:'MB', b:true}, {n:11, t:'UB', b:true}], side: [{n:15, t:'SL'}] },
+                                { main: [{n:12, t:'LB'}, {n:13, t:'MB'}, {n:14, t:'UB'}], side: [{n:16, t:'SU', s:true}] },
+                                { main: [{n:17, t:'LB'}, {n:18, t:'MB'}, {n:19, t:'UB'}], side: [{n:23, t:'SL'}] },
+                                { main: [{n:20, t:'LB', b:true}, {n:21, t:'MB', b:true}, {n:22, t:'UB'}], side: [{n:24, t:'SU'}] }
+                            ];
+
+                            const generateSeatMap = () => {
+                                let html = '';
+                                rows.forEach(row => {
+                                    html += `<div class="seat-grid items-center">`;
+                                    // Main Berths
+                                    row.main.forEach(seat => {
+                                        const classes = seat.s ? 'bg-primary text-white border-primary' : 
+                                                        seat.b ? 'bg-surface-container-high text-outline border-transparent cursor-not-allowed' : 
+                                                        'bg-white text-on-surface border-outline-variant hover:border-secondary transition-colors cursor-pointer';
+                                        html += `
+                                            <div onclick="${!seat.b ? 'toggleSeat(this)' : ''}" class="${classes} border rounded-xl p-4 flex flex-col items-center justify-center min-h-[80px] group">
+                                                <span class="font-title-md text-title-md">${seat.n}</span>
+                                                <span class="font-label-sm text-label-sm ${seat.s ? 'text-blue-100' : 'text-outline'} group-hover:text-secondary">${seat.t}</span>
+                                            </div>
+                                        `;
+                                    });
+                                    // Aisle
+                                    html += `<div class="flex items-center justify-center font-label-sm text-label-sm text-outline-variant rotate-90 tracking-widest pointer-events-none">AISLE</div>`;
+                                    // Side Berths
+                                    row.side.forEach(seat => {
+                                        const classes = seat.s ? 'bg-primary text-white border-primary' : 
+                                                        seat.b ? 'bg-surface-container-high text-outline border-transparent cursor-not-allowed' : 
+                                                        'bg-white text-on-surface border-outline-variant hover:border-secondary transition-colors cursor-pointer';
+                                        html += `
+                                            <div onclick="${!seat.b ? 'toggleSeat(this)' : ''}" class="${classes} border rounded-xl p-4 flex flex-col items-center justify-center min-h-[80px] group">
+                                                <span class="font-title-md text-title-md">${seat.n}</span>
+                                                <span class="font-label-sm text-label-sm ${seat.s ? 'text-blue-100' : 'text-outline'} group-hover:text-secondary">${seat.t}</span>
+                                            </div>
+                                        `;
+                                    });
+                                    html += `</div>`;
+                                });
+                                document.write(html);
+                            }
+                            generateSeatMap();
+                        </script>
+</div>
+<!-- Coach Boundary End -->
+<div class="flex items-center justify-between opacity-30 px-4 mt-8">
+<span class="font-label-sm text-label-sm">WASHROOMS</span>
+<div class="h-[1px] flex-1 mx-8 bg-outline-variant"></div>
+<span class="font-label-sm text-label-sm">DOOR</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Booking Summary -->
+<aside class="w-full lg:w-[400px] sticky top-32">
+<div class="bg-white rounded-3xl border border-border-light shadow-lg p-8">
+<h3 class="font-headline-lg text-headline-lg mb-6 text-on-surface">Trip Summary</h3>
+<div class="flex flex-col gap-6 mb-8">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Coach Selected</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">Coach B2 • AC 3 Tier</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Selected Seats</span>
+<div class="flex flex-wrap gap-2" id="selected-seats-container">
+<!-- Seat Chips -->
+<div class="bg-primary-container/10 text-primary px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2">
+                                4 LB <span class="material-symbols-outlined text-[16px] cursor-pointer">close</span>
+</div>
+<div class="bg-primary-container/10 text-primary px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2">
+                                16 SU <span class="material-symbols-outlined text-[16px] cursor-pointer">close</span>
+</div>
+</div>
+<!-- Empty State logic integrated here -->
+<div class="hidden font-body-md text-body-md text-outline italic" id="empty-state">Select a seat to continue</div>
+</div>
+<div class="h-[1px] bg-border-light w-full"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Passengers</span>
+<span class="font-title-md text-title-md">2 Adult</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-outline uppercase">Fare</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹3,420</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-5 rounded-2xl font-label-md text-label-md hover:bg-primary-container transition-all shadow-md active:scale-95">
+                    Continue to Payment
+                </button>
+<p class="text-center font-label-sm text-label-sm text-outline mt-4">Taxes and fees calculated at checkout</p>
+</div>
+<!-- Promotion Card -->
+<div class="mt-6 bg-secondary text-white p-6 rounded-3xl relative overflow-hidden group">
+<div class="relative z-10 flex flex-col gap-2">
+<span class="font-label-md text-label-md font-bold uppercase tracking-widest text-secondary-fixed-dim">RailVista+ Perk</span>
+<h4 class="font-title-md text-title-md leading-tight">Get 10% back on seat selection fees with RailVista+</h4>
+<button class="mt-2 text-white border-b border-white/40 w-fit font-label-md text-label-md hover:border-white transition-all">Learn more</button>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-20 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+</div>
+</aside>
+</main>
+<!-- Interactive script for seat selection simulation -->
+<script>
+        function toggleSeat(element) {
+            const isSelected = element.classList.contains('bg-primary');
+            const seatNum = element.querySelector('.text-title-md').innerText;
+            const berthType = element.querySelector('.text-label-sm').innerText;
+
+            if (isSelected) {
+                // Deselect
+                element.classList.remove('bg-primary', 'text-white', 'border-primary');
+                element.classList.add('bg-white', 'text-on-surface', 'border-outline-variant');
+                element.querySelector('.text-label-sm').classList.replace('text-blue-100', 'text-outline');
+                removeSeatChip(seatNum);
+            } else {
+                // Select
+                element.classList.add('bg-primary', 'text-white', 'border-primary');
+                element.classList.remove('bg-white', 'text-on-surface', 'border-outline-variant');
+                element.querySelector('.text-label-sm').classList.replace('text-outline', 'text-blue-100');
+                addSeatChip(seatNum, berthType);
+            }
+            updateEmptyState();
+        }
+
+        function addSeatChip(num, type) {
+            const container = document.getElementById('selected-seats-container');
+            const chip = document.createElement('div');
+            chip.id = `chip-${num}`;
+            chip.className = 'bg-primary-container/10 text-primary px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2 animate-in fade-in zoom-in duration-300';
+            chip.innerHTML = `${num} ${type} <span class="material-symbols-outlined text-[16px] cursor-pointer" onclick="deselectById('${num}')">close</span>`;
+            container.appendChild(chip);
+        }
+
+        function removeSeatChip(num) {
+            const chip = document.getElementById(`chip-${num}`);
+            if (chip) chip.remove();
+        }
+
+        function deselectById(num) {
+            // Find the seat div in the grid and click it to trigger logic
+            const allSeats = document.querySelectorAll('.seat-grid > div');
+            allSeats.forEach(seat => {
+                if (seat.querySelector('.text-title-md')?.innerText === num) {
+                    seat.click();
+                }
+            });
+        }
+
+        function updateEmptyState() {
+            const container = document.getElementById('selected-seats-container');
+            const emptyState = document.getElementById('empty-state');
+            if (container.children.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+        }
+    </script>
+</body></html>

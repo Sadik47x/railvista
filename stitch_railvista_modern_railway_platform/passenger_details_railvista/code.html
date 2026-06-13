@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Passenger Details | RailVista</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-warning": "#FEBB02",
+                        "secondary": "#0058bc",
+                        "on-surface": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "outline": "#747684",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#153ea3",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#444653",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "primary": "#002068",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "on-secondary-container": "#fefcff",
+                        "secondary-container": "#1070e8",
+                        "error": "#ba1a1a",
+                        "background": "#fcf9f8",
+                        "primary-container": "#003399",
+                        "on-primary-container": "#8aa4ff",
+                        "surface-tint": "#3557bc",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b5c4ff",
+                        "on-secondary-fixed-variant": "#004494",
+                        "inverse-on-surface": "#f3f0ef",
+                        "outline-variant": "#c4c5d5",
+                        "tertiary": "#002e1c",
+                        "on-tertiary-container": "#00c081",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed-variant": "#005234",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#55feb5",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00472d",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#00164e",
+                        "border-light": "#E2E8F0",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed": "#001a41",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-dim": "#dcd9d9",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed": "#dce1ff",
+                        "surface-container": "#f0eded",
+                        "surface-muted": "#F5F7FA",
+                        "surface": "#fcf9f8",
+                        "tertiary-fixed-dim": "#2ae19b",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .scale-98:active { transform: scale(0.98); }
+        .booking-gradient { background: linear-gradient(135deg, #002068 0%, #003399 100%); }
+        .floating-label-input:focus-within label,
+        .floating-label-input input:not(:placeholder-shown) + label {
+            transform: translateY(-24px) scale(0.85);
+            color: #0058bc;
+        }
+        .custom-shadow { box-shadow: 0 10px 30px -10px rgba(0, 51, 153, 0.08); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-white dark:bg-on-surface border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-8">
+<img alt="RailVista Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFZJ0bPtPX9sncBHp788EtK8ZGYQcfTKPccxb261WL70XLXVx8vJx_9nqGZ1BQwe-MX5ClkvHT7NNW5Eggey0GXFv2khRS9CVZwBD1GnwohdG5gBUoPHVY9lpwMU031DbSsdAXFfozY9Xk_ihT4EMGTYsyJa65uORLR_w0sFdbRUBWixLpmpvbdYoubyCkSJRugin0pfnD1yYyya1O2xqQRQhweBTvKlA-_Lg7grM8Bvqv9Su6Ovhaud8KUGnEDXnLtztKVk9cLS0"/>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-secondary transition-colors" href="#">Trips</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-secondary transition-colors" href="#">Status</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary" href="#">Account</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-secondary transition-colors" href="#">Help</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-title-md text-title-md text-primary dark:text-primary-fixed-dim scale-98 transition-transform font-bold">Sign In</button>
+</div>
+</header>
+<main class="mt-24 mb-24 px-margin-desktop max-w-container-max mx-auto">
+<!-- Progress Indicator -->
+<section class="mb-10">
+<div class="flex items-center justify-between max-w-2xl mx-auto">
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Train</span>
+</div>
+<div class="flex-1 h-[2px] bg-primary mx-4 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Coach</span>
+</div>
+<div class="flex-1 h-[2px] bg-primary mx-4 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Seats</span>
+</div>
+<div class="flex-1 h-[2px] bg-outline-variant mx-4 -mt-6"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full border-2 border-secondary text-secondary flex items-center justify-center">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold">Passenger</span>
+</div>
+</div>
+</section>
+<!-- Main Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Forms -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Train Summary Card -->
+<div class="bg-primary p-6 rounded-xl text-white flex flex-col md:flex-row justify-between items-center custom-shadow">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-lg bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]">train</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md">Rajdhani Express (#12301)</h2>
+<p class="font-body-md text-white/80">Howrah Junction <span class="mx-2">→</span> New Delhi</p>
+</div>
+</div>
+<div class="mt-4 md:mt-0 flex gap-4 text-right">
+<div>
+<p class="font-label-sm text-white/60 uppercase">Coach</p>
+<p class="font-title-md font-bold">B2</p>
+</div>
+<div class="w-px h-10 bg-white/20"></div>
+<div>
+<p class="font-label-sm text-white/60 uppercase">Seats</p>
+<p class="font-title-md font-bold">23 LB, 24 MB</p>
+</div>
+</div>
+</div>
+<!-- Passenger Details Section -->
+<section>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">group</span>
+<h3 class="font-title-md text-title-md text-primary">Passenger Information</h3>
+</div>
+<div class="space-y-6">
+<!-- Passenger Card 1 -->
+<div class="bg-white p-8 rounded-xl border border-outline-variant custom-shadow transition-all hover:border-secondary">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-md text-secondary bg-secondary-fixed px-3 py-1 rounded-full">Passenger 1 — Seat 23 LB</span>
+<button class="text-error font-label-md flex items-center gap-1 opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined text-sm">delete</span> Remove
+                                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-6 relative group">
+<label class="block font-label-md text-on-surface-variant mb-2">Full Name</label>
+<input class="w-full px-4 py-3 rounded-lg border-2 border-outline-variant focus:border-secondary focus:ring-0 outline-none transition-colors" placeholder="As per Govt ID" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-md text-on-surface-variant mb-2">Age</label>
+<input class="w-full px-4 py-3 rounded-lg border-2 border-outline-variant focus:border-secondary focus:ring-0 outline-none transition-colors" placeholder="YY" type="number"/>
+</div>
+<div class="md:col-span-4">
+<label class="block font-label-md text-on-surface-variant mb-2">Gender</label>
+<div class="flex bg-surface-container rounded-lg p-1 border-2 border-outline-variant">
+<button class="flex-1 py-2 text-label-md rounded-md bg-white text-secondary shadow-sm font-bold">Male</button>
+<button class="flex-1 py-2 text-label-md rounded-md text-on-surface-variant hover:bg-white/50">Female</button>
+<button class="flex-1 py-2 text-label-md rounded-md text-on-surface-variant hover:bg-white/50">Other</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Passenger Card 2 -->
+<div class="bg-white p-8 rounded-xl border border-outline-variant custom-shadow transition-all hover:border-secondary">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-md text-secondary bg-secondary-fixed px-3 py-1 rounded-full">Passenger 2 — Seat 24 MB</span>
+<button class="text-error font-label-md flex items-center gap-1 opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined text-sm">delete</span> Remove
+                                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-6">
+<label class="block font-label-md text-on-surface-variant mb-2">Full Name</label>
+<input class="w-full px-4 py-3 rounded-lg border-2 border-outline-variant focus:border-secondary focus:ring-0 outline-none transition-colors" placeholder="As per Govt ID" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-md text-on-surface-variant mb-2">Age</label>
+<input class="w-full px-4 py-3 rounded-lg border-2 border-outline-variant focus:border-secondary focus:ring-0 outline-none transition-colors" placeholder="YY" type="number"/>
+</div>
+<div class="md:col-span-4">
+<label class="block font-label-md text-on-surface-variant mb-2">Gender</label>
+<div class="flex bg-surface-container rounded-lg p-1 border-2 border-outline-variant">
+<button class="flex-1 py-2 text-label-md rounded-md text-on-surface-variant hover:bg-white/50">Male</button>
+<button class="flex-1 py-2 text-label-md rounded-md bg-white text-secondary shadow-sm font-bold">Female</button>
+<button class="flex-1 py-2 text-label-md rounded-md text-on-surface-variant hover:bg-white/50">Other</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Details Section -->
+<section class="bg-white p-8 rounded-xl border border-outline-variant custom-shadow">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">contact_mail</span>
+<h3 class="font-title-md text-title-md text-primary">Contact Details</h3>
+</div>
+<p class="font-body-md text-on-surface-variant mb-6">Your ticket will be sent to the email and mobile number below.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2">Email Address</label>
+<input class="w-full px-4 py-3 rounded-lg border-2 border-outline-variant focus:border-secondary focus:ring-0 outline-none transition-colors" placeholder="traveler@example.com" type="email"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface-variant mb-2">Mobile Number</label>
+<div class="flex">
+<span class="inline-flex items-center px-3 rounded-l-lg border-2 border-r-0 border-outline-variant bg-surface-container-low text-on-surface-variant font-label-md">+91</span>
+<input class="w-full px-4 py-3 rounded-r-lg border-2 border-outline-variant focus:border-secondary focus:ring-0 outline-none transition-colors" placeholder="98765 43210" type="tel"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Elements -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+<div class="flex items-start gap-3 p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<p class="font-label-md font-bold text-primary">Secure Checkout</p>
+<p class="text-[12px] text-on-surface-variant">256-bit SSL encrypted</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">speed</span>
+<div>
+<p class="font-label-md font-bold text-primary">Instant Confirmation</p>
+<p class="text-[12px] text-on-surface-variant">Tickets delivered in seconds</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+<div>
+<p class="font-label-md font-bold text-primary">Digital Ticket</p>
+<p class="text-[12px] text-on-surface-variant">Go paperless, travel smart</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-gutter">
+<div class="bg-white rounded-xl border border-outline-variant custom-shadow overflow-hidden">
+<div class="p-6 border-b border-outline-variant bg-surface-container-lowest">
+<h3 class="font-title-md text-title-md text-primary">Fare Summary</h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Base Fare (2 Adults)</span>
+<span class="font-bold">₹4,250</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Convenience Fee</span>
+<span class="font-bold">₹45</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Taxes (GST)</span>
+<span class="font-bold">₹212</span>
+</div>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="font-title-md text-primary">Total Amount</span>
+<span class="text-2xl font-extrabold text-primary">₹4,507</span>
+</div>
+</div>
+<div class="px-6 pb-6 space-y-3">
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Seats Selected</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-secondary font-label-md border border-secondary/20">23 LB</span>
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-secondary font-label-md border border-secondary/20">24 MB</span>
+</div>
+</div>
+<div class="px-6 pb-6">
+<button class="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-container transition-all scale-98 shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                            Confirm Booking
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="mt-4 text-center text-[12px] text-on-surface-variant">By clicking confirm, you agree to our <a class="text-secondary underline" href="#">Refund Rules</a></p>
+</div>
+</div>
+<!-- Ad/Visual Accent -->
+<div class="relative h-48 rounded-xl overflow-hidden group">
+<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-all duration-500 z-10"></div>
+<div class="absolute inset-0 z-20 p-6 flex flex-col justify-end">
+<h4 class="text-white font-title-md mb-1">Travel Insurance</h4>
+<p class="text-white/80 text-label-md">Secure your journey for just ₹35</p>
+<button class="mt-3 w-max px-4 py-1.5 bg-white text-primary rounded-full font-bold text-label-sm">Add Now</button>
+</div>
+<div class="w-full h-full bg-cover bg-center" data-alt="A serene landscape visible through a moving train window, with soft morning sunlight filtering through the glass. The scene features lush green fields and distant rolling hills, creating a peaceful and secure atmosphere for travel. High-performance travel photography with cool blue tones and vibrant natural highlights." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSRlBYve22n6CBdFRrxUyr3340GZ10CRipAbGCPNs4MfwqHb7L6p6DsaUQ1EoVi6OvOdtcS0scjeBlQbu00nsbqeJ7BCRWcMh9JTaztXjXI5cs0M48vKnBWP8G3EqkI5J9Aa-0lJOVYXWWkzJre7u8ST_oEikDNAuXyr2Z63mXzLvfEbMMTZRAjOPJyAlmTE8Y3naqCeZRJy5210LaU4oh2T935d6-_HqHNSpskK9XqtcV2Wbqe1EPoek0CtPYklb3T0llcgDblng')"></div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant">
+<div class="flex flex-col items-center md:items-start gap-4">
+<img alt="RailVista Logo" class="h-6 w-auto opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFZJ0bPtPX9sncBHp788EtK8ZGYQcfTKPccxb261WL70XLXVx8vJx_9nqGZ1BQwe-MX5ClkvHT7NNW5Eggey0GXFv2khRS9CVZwBD1GnwohdG5gBUoPHVY9lpwMU031DbSsdAXFfozY9Xk_ihT4EMGTYsyJa65uORLR_w0sFdbRUBWixLpmpvbdYoubyCkSJRugin0pfnD1yYyya1O2xqQRQhweBTvKlA-_Lg7grM8Bvqv9Su6Ovhaud8KUGnEDXnLtztKVk9cLS0"/>
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 RailVista Technologies. Modernizing Indian Railways.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Refund Rules</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Support</a>
+</div>
+</footer>
+<script>
+        // Micro-interaction for form focus
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.style.transition = 'all 0.2s ease-in-out';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>
